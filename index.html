@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026级广海新生生存指南</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<style>
+:root{
+  --blue:#0b6f9c;
+  --blue2:#149cc8;
+  --deep:#064d70;
+  --cyan:#dff6fb;
+  --bg:#f4fbfd;
+  --text:#173042;
+  --muted:#66808f;
+  --white:#ffffff;
+  --line:#d9edf3;
+  --shadow:0 14px 40px rgba(19,103,137,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.7;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(55,180,218,.08), transparent 25%),
+    radial-gradient(circle at 90% 10%, rgba(0,122,165,.08), transparent 28%);
+}
+.container{width:min(1120px,92%);margin:auto}
+nav{
+  position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(14px);
+  background:rgba(244,251,253,.82);
+  border-bottom:1px solid rgba(217,237,243,.9);
+}
+.nav-inner{
+  height:68px;display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-weight:800;color:var(--deep);letter-spacing:.5px}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;gap:5px;flex-direction:column}
+.menu-toggle span{display:block;width:24px;height:2.5px;background:var(--deep);border-radius:2px;transition:.25s}
+body.menu-open .menu-toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+body.menu-open .menu-toggle span:nth-child(2){opacity:0}
+body.menu-open .menu-toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.brand{text-decoration:none;color:var(--deep)}
+.hero{
+  padding:80px 0 65px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.badge{
+  display:inline-block;
+  padding:7px 14px;border-radius:999px;
+  background:#e4f7fb;color:var(--blue);
+  font-size:14px;font-weight:700;
+}
+h1{
+  font-size:clamp(34px,6vw,64px);
+  line-height:1.15;margin:18px 0;
+  color:var(--deep);letter-spacing:-2px;
+}
+.hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:17px}
+.hero-actions{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 22px;border-radius:14px;text-decoration:none;font-weight:700;
+  transition:transform .2s,box-shadow .2s,background .2s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:white;box-shadow:var(--shadow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(19,103,137,.25)}
+.btn-light{background:white;color:var(--blue);border:1px solid var(--line)}
+.btn-light:hover{transform:translateY(-2px);border-color:var(--blue2);color:var(--blue2)}
+.wave{height:60px;margin-top:40px;background:linear-gradient(180deg,transparent 0 35%,#fff 36%);clip-path:polygon(0 45%,10% 55%,20% 38%,30% 58%,40% 40%,50% 60%,60% 42%,70% 57%,80% 40%,90% 55%,100% 42%,100% 100%,0 100%)}
+section{padding:78px 0}
+section.white{background:#fff}
+.section-head{text-align:center;max-width:700px;margin:0 auto 42px}
+.kicker{color:var(--blue);font-weight:800;font-size:14px;letter-spacing:1px}
+h2{font-size:clamp(28px,4vw,42px);margin:8px 0 12px;color:var(--deep)}
+.section-head p{color:var(--muted);margin:0}
+.grid{display:grid;gap:18px}
+.cards{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;
+  padding:25px;box-shadow:0 8px 25px rgba(13,83,111,.05);
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(13,83,111,.12);border-color:#b7e2ec}
+.icon{
+  width:48px;height:48px;border-radius:15px;
+  display:grid;place-items:center;background:var(--cyan);font-size:23px;
+}
+.card h3{margin:15px 0 8px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.highlight{
+  margin-top:22px;padding:24px;border-radius:22px;
+  background:linear-gradient(135deg,#e7f8fb,#f8fdff);
+  border:1px solid var(--line);
+}
+.clean-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;padding:0;margin:18px 0 0;list-style:none}
+.clean-list li{font-size:15px}
+.clean-list li::before{content:"✓";color:var(--blue);font-weight:900;margin-right:8px}
+.warning{
+  margin-top:20px;padding:18px 20px;border-radius:18px;
+  background:#fff7f0;border:1px solid #ffe0c4;color:#8c5828;
+}
+.map-wrap{
+  background:linear-gradient(180deg,#f8feff,#edf9fc);
+  border:1px solid var(--line);border-radius:28px;padding:20px;
+  box-shadow:var(--shadow);
+}
+.map-wrap img{width:100%;display:block;border-radius:18px}
+.map-tip{margin:15px 5px 2px;color:var(--muted);font-size:14px;text-align:center}
+.info-grid{grid-template-columns:repeat(3,1fr);margin-top:24px}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;transition:transform .25s,box-shadow .25s}
+.info-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(13,83,111,.1)}
+.info-card h3{margin:0 0 12px;color:var(--deep)}
+.info-card ul{padding-left:18px;margin:0;color:var(--muted);font-size:14px}
+.info-card li{margin:7px 0}
+.welfare{
+  border-radius:32px;padding:52px 6%;
+  background:linear-gradient(135deg,#07597d,#0e9cc6);
+  color:white;position:relative;overflow:hidden;
+}
+.welfare::after{
+  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+  background:rgba(255,255,255,.08);right:-170px;top:-180px;
+}
+.welfare-grid{display:grid;grid-template-columns:1fr;gap:38px;position:relative;z-index:1}
+.welfare-head{text-align:center;max-width:760px;margin:0 auto}
+.welfare h2{color:white;margin-top:0}
+.welfare p{color:rgba(255,255,255,.88)}
+.number-box{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0;justify-content:center}
+.number{padding:9px 13px;border-radius:12px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);font-weight:800}
+.qr-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
+.qr-card{
+  background:white;border-radius:24px;padding:24px 20px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  box-shadow:0 16px 45px rgba(0,0,0,.15);transition:transform .25s;
+}
+.qr-card:hover{transform:translateY(-6px)}
+.qr-box{
+  width:150px;height:150px;border-radius:16px;
+  overflow:hidden;margin-bottom:14px;background:#f0f0f0;
+}
+.qr-box img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;
+}
+.qr-card strong{color:var(--deep);font-size:15px}
+.qr-card .qr-desc{color:var(--muted);font-size:13px;margin:6px 0 0}
+footer{padding:35px 0 45px;text-align:center;color:var(--muted);font-size:14px}
+.small{font-size:13px;color:var(--muted)}
+@media(max-width:800px){
+  .menu-toggle{display:flex}
+  .nav-links{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    background:rgba(255,255,255,.98);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(217,237,243,.9);padding:16px 0;
+    flex-direction:column;align-items:center;gap:0;z-index:9;
+    box-shadow:0 14px 30px rgba(13,83,111,.08);
+  }
+  body.menu-open .nav-links{display:flex}
+  .nav-links a{display:block;padding:12px 0;width:100%;text-align:center;font-size:16px}
+  .hero{padding:62px 0 35px}
+  section{padding:58px 0}
+  .cards,.info-grid{grid-template-columns:1fr}
+  .clean-list{grid-template-columns:1fr}
+  .welfare{padding:36px 24px}
+  .qr-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#">🌊 广海新生生存指南</a>
+    <button class="menu-toggle" aria-label="打开菜单" onclick="document.body.classList.toggle('menu-open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#about" onclick="document.body.classList.remove('menu-open')">介绍</a>
+      <a href="#map" onclick="document.body.classList.remove('menu-open')">校园地图</a>
+      <a href="#welfare" onclick="document.body.classList.remove('menu-open')">社群福利</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="badge">2026级广东海洋大学新生专属</span>
+    <h1>哈喽 (#^.^#) 👋🏻<br>26级的广海新同学，你们好！</h1>
+    <p>我们是几个还没被大学生活彻底摧残的大二学长学姐。这个暑假，我们整理了一份尽量不让你踩坑的「广海生存指南」。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#about">先看看有什么</a>
+      <a class="btn btn-light" href="#map">查看校园地图</a>
+    </div>
+  </div>
+  <div class="wave"></div>
+</header>
+
+<section class="white" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">ABOUT THE COMMUNITY</div>
+      <h2>📢 26级广海新生干货群</h2>
+      <p>很多新生只关心宿舍和军训，却容易错过大一真正值得提前了解的机会。</p>
+    </div>
+
+    <div class="grid cards">
+      <div class="card"><div class="icon">🎓</div><h3>真实经验</h3><p>学长学姐分享选课、综测、学习、生活以及各种避坑经验。</p></div>
+      <div class="card"><div class="icon">🚀</div><h3>成长机会</h3><p>竞赛、大创项目、实验室申请、班干部竞选等信息整理。</p></div>
+      <div class="card"><div class="icon">🤝</div><h3>资源互助</h3><p>靠谱兼职经验、二手资源交易、生活问题交流，信息尽量公开透明。</p></div>
+    </div>
+
+    <div class="highlight">
+      <strong>你可以在群里获得：</strong>
+      <ul class="clean-list">
+        <li>学长学姐真实经验分享</li>
+        <li>各类学科竞赛、大创项目入门攻略</li>
+        <li>学院实验室怎么进、什么时候可以申请</li>
+        <li>大一如何准备班干部竞选</li>
+        <li>选课、综测、学习生活实用干货</li>
+        <li>校内靠谱兼职经验分享</li>
+        <li>二手资源交易与互助信息</li>
+      </ul>
+    </div>
+
+    <div class="warning">
+      <strong>❌ 进群你不会遇到：</strong><br>
+      没有代理私加你推销校园卡、电话卡。没有机构天天发四六级、考研辅导广告。管理员会处理刷屏、骚扰和明显带货行为，踢完还会公示，主打一个谁闲着没事谁倒霉。
+    </div>
+    <p class="small" style="margin-top:14px;">⚠️ 非广东海洋大学官方社群，群内信息仅供参考，请以学校官方通知为准。</p>
+  </div>
+</section>
+
+<section id="map">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">CAMPUS MAP</div>
+      <h2>🗺️ 湖光校区地图</h2>
+      <p>报到前可以先熟悉一下。开学第一天少走一点冤枉路，毕竟广东的太阳没有耐心陪你散步。</p>
+    </div>
+
+    <div class="map-wrap">
+      <img src="campus-map.jpg" alt="广东海洋大学湖光校区地图">
+      <div class="map-tip">💡 <a href="pdf-converter.html" style="color:var(--blue);text-decoration:underline;">点击下载高清 PDF 版地图</a>，方便保存在手机里随时查看</div>
+    </div>
+
+    <div class="grid info-grid">
+      <div class="info-card">
+        <h3>🚿 水费 / 热水卡</h3>
+        <ul>
+          <li><b>东区：</b>东山食苑（二饭）</li>
+          <li><b>中区：</b>湖畔食苑（三饭）</li>
+          <li><b>西区：</b>西岭食苑（四饭）</li>
+          <li><b>充值：</b>微信小程序「塔内生活」</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>🏥 校医院</h3>
+        <ul>
+          <li>提供全天24小时诊疗服务</li>
+          <li><b>急诊：</b>晚上10:00 - 次日8:00</li>
+          <li><b>急诊电话：</b>2383120</li>
+          <li><b>保险报销：</b>周一、周三 8:10-11:30 / 14:30-16:20</li>
+          <li><b>电话：</b>2383773</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>📦 快递站点</h3>
+        <ul>
+          <li>统一营业时间：10:00 - 20:00</li>
+          <li><b>西区：</b>西岭食苑旁，申通/邮政/韵达</li>
+          <li><b>东区：</b>商业中心后门右侧，顺丰/京东</li>
+          <li><b>校外：</b>极兔/中通/圆通</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="white" id="welfare">
+  <div class="container">
+    <div class="welfare">
+      <div class="welfare-grid">
+        <div class="welfare-head">
+          <div class="kicker" style="color:#bfefff">COMMUNITY BENEFITS</div>
+          <h2>🎁 不只是进群<br>还有一点小福利</h2>
+          <p>我们会在每一份新生卡片上，用马克笔写上编号，例如 <b>001 - 500</b>。</p>
+          <p>之后会随机抽取 10 个幸运号码送奶茶。编号不是玄学，是为了让你至少有一个理由记得自己什么时候进了这个群。</p>
+          <p><b>群里每天都会更新：</b>最新报到信息、校园通知整理、生活攻略，以及学长学姐分享的各种干货。</p>
+        </div>
+
+        <div class="qr-row">
+          <div class="qr-card">
+            <div class="qr-box">
+              <img src="qr-zhubai.jpg" alt="渚白学长二维码">
+            </div>
+            <strong>渚白学长</strong>
+            <p class="qr-desc">有问题直接在群里喊我们。</p>
+          </div>
+          <div class="qr-card">
+            <div class="qr-box">
+              <img src="qr-mo.jpg" alt="墨学长二维码">
+            </div>
+            <strong>墨学长</strong>
+            <p class="qr-desc">资料分享、文件传输更方便。</p>
+          </div>
+          <div class="qr-card">
+            <div class="qr-box">
+              <img src="qr-canger.jpg" alt="苍耳学姐二维码">
+            </div>
+            <strong>苍耳学姐</strong>
+            <p class="qr-desc">一对一解答你的入学疑问。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>🌊 26级广东海洋大学新生生存指南</div>
+  <div class="small">由在校学长学姐整理 · 信息持续更新</div>
+</footer>
+
+</body>
+</html>
